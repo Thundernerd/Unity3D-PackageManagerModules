@@ -1,0 +1,20 @@
+{
+    "name": "TNRD.PackageManager.Modules",
+    "references": [
+        "TNRD.Reflectives",
+        "TNRD.PackageManager.Injection",
+        "st.rect-ex.Runtime",
+        "TNRD.ConstrainedRect.Editor"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
