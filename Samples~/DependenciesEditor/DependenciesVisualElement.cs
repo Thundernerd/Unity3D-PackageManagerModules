@@ -11,14 +11,11 @@ using UnityEngine.UIElements;
 
 namespace TNRD.PackageManager.Samples.DependenciesEditor
 {
+    /// <summary>
+    /// A visual element that uses IMGUI to draw a Reorderable List
+    /// </summary>
     public class DependenciesVisualElement : IMGUIContainer
     {
-        private class Dependency
-        {
-            public string Name;
-            public string Version;
-        }
-
         private readonly ReorderableList reorderableList;
         private readonly List<Dependency> dependencies = new List<Dependency>();
 
@@ -51,14 +48,15 @@ namespace TNRD.PackageManager.Samples.DependenciesEditor
                 }
 
                 ManifestEditor manifestEditor = ManifestEditor.Open(path);
-                foreach (PackageManifestEditor.Dependency dependency in manifestEditor.Dependencies)
+                // We're clearing all the dependencies here because we're going to add our own list of dependencies, doing it this way because there is no specific .ClearDependencies function
+                foreach (Dependency dependency in manifestEditor.Dependencies)
                 {
                     manifestEditor.RemoveDependency(dependency.Id);
                 }
 
                 foreach (Dependency dependency in dependencies)
                 {
-                    manifestEditor.AddDependency(dependency.Name, dependency.Version);
+                    manifestEditor.AddDependency(dependency.Id, dependency.Version);
                 }
 
                 manifestEditor.Save();
@@ -78,7 +76,7 @@ namespace TNRD.PackageManager.Samples.DependenciesEditor
 
             EditorGUI.BeginDisabledGroup(true);
             Rect nameRect = new Rect(x, y, halfWidth - 2, height);
-            EditorGUI.TextField(nameRect, dependency.Name);
+            EditorGUI.TextField(nameRect, dependency.Id);
             EditorGUI.EndDisabledGroup();
 
             Rect versionRect = new Rect(x + halfWidth + 2, y, halfWidth - 2, height);
@@ -99,7 +97,7 @@ namespace TNRD.PackageManager.Samples.DependenciesEditor
             foreach (IPackageVersion package in packages)
             {
                 GUIContent content = new GUIContent($"{package.author ?? "Unknown"}/{package.displayName}");
-                if (dependencies.Any(x => x.Name == package.name))
+                if (dependencies.Any(x => x.Id == package.name))
                 {
                     menu.AddItem(content, true, null);
                 }
@@ -117,21 +115,21 @@ namespace TNRD.PackageManager.Samples.DependenciesEditor
             IPackageVersion package = (IPackageVersion) data;
             reorderableList.list.Add(new Dependency
             {
-                Name = package.name,
+                Id = package.name,
                 Version = package.versionString
             });
         }
 
-        public void UpdatePackage(IPackageVersion currentPackage)
+        public void UpdatePackage(IPackageVersion packageVersion)
         {
-            this.currentPackage = currentPackage;
+            currentPackage = packageVersion;
             dependencies.Clear();
 
-            foreach (DependencyInfo dependency in currentPackage.dependencies)
+            foreach (DependencyInfo dependency in packageVersion.dependencies)
             {
-                dependencies.Add(new Dependency()
+                dependencies.Add(new Dependency
                 {
-                    Name = dependency.name,
+                    Id = dependency.name,
                     Version = dependency.version
                 });
             }

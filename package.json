@@ -1,33 +1,34 @@
 {
-  "name": "net.tnrd.packagemanagermodules",
-  "version": "1.0.0",
-  "displayName": "Package Manager Modules",
-  "unity": "2019.4",
-  "keywords": [
+  "name" : "net.tnrd.packagemanagermodules",
+  "version" : "1.0.0",
+  "displayName" : "Package Manager Modules",
+  "unity" : "2019.4",
+  "keywords" : [
     "package",
     "module",
     "modules",
     "manager",
     "custom"
   ],
-  "author": {
-    "name": "TNRD",
-    "email": "unity3d@tnrd.net",
-    "url": "https://www.tnrd.net"
+  "author" : {
+    "name" : "TNRD",
+    "email" : "unity3d@tnrd.net",
+    "url" : "https://www.tnrd.net"
   },
-  "dependencies": {
-    "net.tnrd.packagemanifesteditor": "1.0.1",
-    "net.tnrd.reflectives": "1.0.1",
-    "net.tnrd.packagemanagerinjection": "1.0.2",
-    "net.tnrd.safeevent": "1.2.1"
+  "dependencies" : {
+    "net.tnrd.safeevent" : "1.2.1",
+    "net.tnrd.packagemanagerinjection" : "1.0.2",
+    "net.tnrd.reflectives" : "1.0.1",
+    "net.tnrd.packagemanifesteditor" : "1.0.1",
+    "games.artees.semver" : "0.3.3"
   },
-  "samples": [
+  "samples" : [
     {
-      "displayName": "Dependencies Editor",
-      "description": "A simple editor that allows you to add dependencies through the package manager details pane",
-      "path": "Samples~/DependenciesEditor"
+      "displayName" : "Dependencies Editor",
+      "description" : "A simple editor that allows you to add dependencies through the package manager details pane",
+      "path" : "Samples~/DependenciesEditor"
     }
   ],
-  "unityRelease": "16f1",
-  "description": "A toolkit to create modules for the Package Manager Window"
+  "unityRelease" : "16f1",
+  "description" : "A toolkit to create modules for the Package Manager Window"
 }

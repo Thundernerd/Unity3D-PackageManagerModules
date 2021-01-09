@@ -5,7 +5,6 @@ using TNRD.Reflectives;
 using UnityEditor;
 using UnityEditor.Compilation;
 using UnityEditor.UIElements;
-using UnityEngine;
 using UnityEngine.UIElements;
 
 namespace TNRD.PackageManager.Modules
