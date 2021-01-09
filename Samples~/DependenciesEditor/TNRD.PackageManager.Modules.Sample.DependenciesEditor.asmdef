@@ -1,0 +1,22 @@
+{
+    "name": "TNRD.PackageManager.Modules.Sample.DependenciesEditor",
+    "references": [
+        "GUID:ee2643f9418d0114e8661218cd13dc00",
+        "GUID:45e7227e1f0026f448551b5842d9d3a8",
+        "GUID:b9b1989a44a8f4c43b9f1ed6b34ba20b",
+        "GUID:ce6dbeb35d46cfa4f919aa4f342116b1",
+        "GUID:343deaaf83e0cee4ca978e7df0b80d21",
+        "GUID:c7f2f2911de381941be7186214305448"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

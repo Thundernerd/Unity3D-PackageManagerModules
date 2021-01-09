@@ -2,12 +2,13 @@
   "name": "net.tnrd.packagemanagermodules",
   "version": "1.0.0",
   "displayName": "Package Manager Modules",
-  "unity": "2019.1",
+  "unity": "2019.4",
   "keywords": [
-    "rect",
-    "editor",
-    "help",
-    "helper"
+    "package",
+    "module",
+    "modules",
+    "manager",
+    "custom"
   ],
   "author": {
     "name": "TNRD",
@@ -15,7 +16,18 @@
     "url": "https://www.tnrd.net"
   },
   "dependencies": {
-    "st.rect-ex": "0.2.1",
-    "net.tnrd.constrainedrect": "3.0.2"
-  }
+    "net.tnrd.packagemanifesteditor": "1.0.1",
+    "net.tnrd.reflectives": "1.0.1",
+    "net.tnrd.packagemanagerinjection": "1.0.2",
+    "net.tnrd.safeevent": "1.2.1"
+  },
+  "samples": [
+    {
+      "displayName": "Dependencies Editor",
+      "description": "A simple editor that allows you to add dependencies through the package manager details pane",
+      "path": "Samples~/DependenciesEditor"
+    }
+  ],
+  "unityRelease": "16f1",
+  "description": "A toolkit to create modules for the Package Manager Window"
 }

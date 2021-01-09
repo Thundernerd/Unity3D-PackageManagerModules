@@ -1,13 +1,16 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using TNRD.Reflectives;
 using UnityEditor;
+using UnityEditor.Compilation;
 using UnityEditor.UIElements;
+using UnityEngine;
 using UnityEngine.UIElements;
 
 namespace TNRD.PackageManager.Modules
 {
-    sealed internal class ModulesMenu : ToolbarMenu
+    internal sealed class ModulesMenu : ToolbarMenu
     {
         private const string KEY_ENABLED = "Enabled";
         private readonly Dictionary<string, IPackageManagerModule> modules = new Dictionary<string, IPackageManagerModule>();
@@ -18,23 +21,70 @@ namespace TNRD.PackageManager.Modules
 
             List<Type> types = AppDomain.CurrentDomain.GetAssemblies()
                 .SelectMany(x => x.GetTypes())
+                .Where(x => !x.IsAbstract && Utilities.ImplementsOrInherits(x, typeof(IPackageManagerModule)))
                 .ToList();
+
+            if (types.Count == 0)
+            {
+                menu.AppendAction("No modules available", null);
+                return;
+            }
 
             foreach (Type type in types)
             {
-                if (!type.IsSubclassOf(typeof(PackageManagerModule)))
-                    continue;
-                if (type.IsAbstract)
-                    continue;
-
                 IPackageManagerModule module = (IPackageManagerModule) Activator.CreateInstance(type);
                 modules.Add(module.Identifier, module);
+
                 menu.AppendAction(module.DisplayName, ToggleModule, GetModuleStatus, module.Identifier);
+
                 module.Initialize();
                 if (WasEnabled(module))
                 {
                     module.Enable();
                 }
+            }
+
+            RegisterCallback<AttachToPanelEvent>(OnAttachToPanel, TrickleDown.TrickleDown);
+            RegisterCallback<DetachFromPanelEvent>(OnDetachFromPanel, TrickleDown.TrickleDown);
+            CompilationPipeline.compilationStarted += OnStartCompiling;
+        }
+
+        private void OnAttachToPanel(AttachToPanelEvent evt)
+        {
+            foreach (KeyValuePair<string, IPackageManagerModule> kvp in modules)
+            {
+                IPackageManagerModule module = kvp.Value;
+                module.Initialize();
+
+                if (WasEnabled(module))
+                {
+                    module.Enable();
+                }
+            }
+        }
+
+        private void OnDetachFromPanel(DetachFromPanelEvent evt)
+        {
+            DisableAndDisposeModules();
+        }
+
+        private void OnStartCompiling(object obj)
+        {
+            DisableAndDisposeModules();
+        }
+
+        private void DisableAndDisposeModules()
+        {
+            foreach (KeyValuePair<string, IPackageManagerModule> kvp in modules)
+            {
+                IPackageManagerModule module = kvp.Value;
+
+                if (module.IsEnabled)
+                {
+                    module.Disable();
+                }
+
+                module.Dispose();
             }
         }
 
