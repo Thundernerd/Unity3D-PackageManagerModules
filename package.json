@@ -17,10 +17,10 @@
   },
   "dependencies" : {
     "net.tnrd.safeevent" : "1.2.1",
-    "net.tnrd.packagemanagerinjection" : "1.0.2",
-    "net.tnrd.reflectives" : "1.0.1",
-    "net.tnrd.packagemanifesteditor" : "1.0.1",
-    "games.artees.semver" : "0.3.3"
+    "net.tnrd.packagemanagerinjection" : "2.2.1",
+    "net.tnrd.reflectives" : "1.1.1",
+    "net.tnrd.packagemanifesteditor" : "1.1.0",
+    "games.artees.semver" : "0.3.4"
   },
   "samples" : [
     {
