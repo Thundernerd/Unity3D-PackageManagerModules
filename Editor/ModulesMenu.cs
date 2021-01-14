@@ -16,7 +16,8 @@ namespace TNRD.PackageManager.Modules
 
         public ModulesMenu()
         {
-            text = "Modules";
+            SetMenuName();
+            SetMenuStyle();
 
             List<Type> types = AppDomain.CurrentDomain.GetAssemblies()
                 .SelectMany(x => x.GetTypes())
@@ -46,6 +47,29 @@ namespace TNRD.PackageManager.Modules
             RegisterCallback<AttachToPanelEvent>(OnAttachToPanel, TrickleDown.TrickleDown);
             RegisterCallback<DetachFromPanelEvent>(OnDetachFromPanel, TrickleDown.TrickleDown);
             CompilationPipeline.compilationStarted += OnStartCompiling;
+        }
+
+        private void SetMenuName()
+        {
+#if UNITY_2019_4_OR_NEWER
+            text = "Modules";
+#elif UNITY_2019_3_OR_NEWER
+            text = "Modules ▾";
+#elif UNITY_2019_2_OR_NEWER
+            text = "Modules ▾";
+#elif UNITY_2019_1_OR_NEWER
+            text = "Modules ▾";
+#endif
+        }
+
+        private void SetMenuStyle()
+        {
+#if UNITY_2019_1 || UNITY_2019_2
+            RemoveFromClassList("unity-toolbar-menu");
+            AddToClassList("unity-label");
+            AddToClassList("toolbarButton");
+            AddToClassList("pulldown");
+#endif
         }
 
         private void OnAttachToPanel(AttachToPanelEvent evt)
