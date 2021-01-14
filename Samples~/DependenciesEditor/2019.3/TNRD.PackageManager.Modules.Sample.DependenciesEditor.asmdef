@@ -1,5 +1,5 @@
 {
-    "name": "TNRD.PackageManager.Modules.Sample.DependenciesEditor-2019.4",
+    "name": "TNRD.PackageManager.Modules.Sample.DependenciesEditor-2019.3",
     "references": [
         "TNRD.Reflectives",
         "TNRD.PackageManager.Injection",
@@ -17,7 +17,7 @@
     "precompiledReferences": [],
     "autoReferenced": true,
     "defineConstraints": [
-        "UNITY_2019_4"
+        "UNITY_2019_3"
     ],
     "versionDefines": [],
     "noEngineReferences": false

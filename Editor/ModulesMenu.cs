@@ -53,11 +53,11 @@ namespace TNRD.PackageManager.Modules
         {
 #if UNITY_2019_4_OR_NEWER
             text = "Modules";
-#elif UNITY_2019_3_OR_NEWER
+#elif UNITY_2019_3
+            text = "Modules";
+#elif UNITY_2019_2
             text = "Modules ▾";
-#elif UNITY_2019_2_OR_NEWER
-            text = "Modules ▾";
-#elif UNITY_2019_1_OR_NEWER
+#elif UNITY_2019_1
             text = "Modules ▾";
 #endif
         }
