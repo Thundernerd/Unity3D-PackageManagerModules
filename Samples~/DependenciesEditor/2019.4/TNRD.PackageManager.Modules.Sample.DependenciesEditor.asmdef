@@ -1,0 +1,24 @@
+{
+    "name": "TNRD.PackageManager.Modules.Sample.DependenciesEditor-2019.4",
+    "references": [
+        "TNRD.Reflectives",
+        "TNRD.PackageManager.Injection",
+        "TNRD.PackageManager.Modules",
+        "TNRD.PackageManifestEditor.Editor",
+        "UnityEditor.UI",
+        "Artees.SemanticVersioning"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [
+        "UNITY_2019_4"
+    ],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

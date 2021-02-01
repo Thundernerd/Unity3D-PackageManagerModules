@@ -133,11 +133,18 @@ namespace TNRD.PackageManager.Samples.DependenciesEditor
 
         private void RemoveDependenciesVisualElement()
         {
-            PackageDependencies dependencies = PackageManagerInjectionHelper.InjectedVisualElement?.PackageDetails?.dependencies;
-            VisualElement visualElement = dependencies?.Element?.Q("dependenciesInnerContainer");
-            if (visualElement?.Contains(dependenciesVisualElement) ?? false)
+            try
             {
-                visualElement?.Remove(dependenciesVisualElement);
+                PackageDependencies dependencies = PackageManagerInjectionHelper.InjectedVisualElement.PackageDetails.dependencies;
+                VisualElement visualElement = dependencies.Element.Q("dependenciesInnerContainer");
+                if (visualElement.Contains(dependenciesVisualElement))
+                {
+                    visualElement.Remove(dependenciesVisualElement);
+                }
+            }
+            catch (NullReferenceException)
+            {
+                // Thrown when disposing, safe to ignore
             }
         }
     }
