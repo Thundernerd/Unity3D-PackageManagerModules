@@ -1,6 +1,6 @@
 {
   "name" : "net.tnrd.packagemanagermodules",
-  "version" : "1.0.0",
+  "version" : "1.1.0",
   "displayName" : "Package Manager Modules",
   "unity" : "2019.4",
   "keywords" : [
@@ -17,7 +17,7 @@
   },
   "dependencies" : {
     "net.tnrd.safeevent" : "1.2.1",
-    "net.tnrd.packagemanagerinjection" : "2.2.1",
+    "net.tnrd.packagemanagerinjection" : "2.2.3",
     "net.tnrd.reflectives" : "1.1.1",
     "net.tnrd.packagemanifesteditor" : "1.1.0",
     "games.artees.semver" : "0.3.4"

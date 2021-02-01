@@ -74,6 +74,11 @@ namespace TNRD.PackageManager.Modules
 
         private void OnAttachToPanel(AttachToPanelEvent evt)
         {
+            EditorApplication.delayCall += OnAttachToPanelDelayed;
+        }
+
+        private void OnAttachToPanelDelayed()
+        {
             foreach (KeyValuePair<string, IPackageManagerModule> kvp in modules)
             {
                 IPackageManagerModule module = kvp.Value;
