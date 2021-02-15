@@ -17,7 +17,8 @@
     "precompiledReferences": [],
     "autoReferenced": true,
     "defineConstraints": [
-        "UNITY_2019_4"
+        "UNITY_2019_4",
+        "PACKAGE_MANAGER_INJECTION"
     ],
     "versionDefines": [],
     "noEngineReferences": false

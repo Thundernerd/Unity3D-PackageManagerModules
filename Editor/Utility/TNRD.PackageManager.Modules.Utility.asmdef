@@ -1,20 +1,15 @@
 {
-    "name": "TNRD.PackageManager.Modules",
+    "name": "TNRD.PackageManager.Modules.Utility",
     "references": [
-        "TNRD.Reflectives",
-        "TNRD.PackageManager.Injection"
+        "TNRD.ScriptingDefineUtility"
     ],
-    "includePlatforms": [
-        "Editor"
-    ],
+    "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": false,
     "precompiledReferences": [],
     "autoReferenced": true,
-    "defineConstraints": [
-        "PACKAGE_MANAGER_INJECTION"
-    ],
+    "defineConstraints": [],
     "versionDefines": [],
     "noEngineReferences": false
 }
