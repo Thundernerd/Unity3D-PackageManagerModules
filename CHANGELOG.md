@@ -1,5 +1,9 @@
 # Changelog
 
+## [1.3.1] - 2021-02-22
+### Fixed
+- Build issue
+
 ## [1.3.0] - 2021-02-15
 ### Added 
 - PACKAGE_MANAGER_INJECTION define constraint for compilation
